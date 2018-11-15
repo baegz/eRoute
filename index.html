@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <script type="text/javascript" src="script.js"></script>
+    <title>eRoute</title>
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <script>
+      function initMap() {
+        var mapa = new google.maps.Map(document.getElementById('map'), {
+          zoom: 2,
+          center: {lat: 11.237476, lng: -74.199159}
+          });
+
+        var servicioDeDirecciones3 = new google.maps.DirectionsService;
+        var pantallaDeDirecciones3 = new google.maps.DirectionsRenderer;
+
+        //Ruta 1
+        var servicioDeDirecciones1 = new google.maps.DirectionsService;
+        var pantallaDeDirecciones1 = new google.maps.DirectionsRenderer;
+        pantallaDeDirecciones1.setMap(mapa);
+
+        var partida1 =  "Cl. 29i 1 #21F-15, Santa Marta, Magdalena";
+        var puntos1 = [];
+        puntos1.push({
+              location: "Cra. 5 #26B-35, Santa Marta, Magdalena",
+              stopover: true
+            });
+        puntos1.push({
+            location: "Cl. 22 #17A-82, Santa Marta, Magdalena",
+            stopover: true
+        });
+        calcularYVisualizarRuta(servicioDeDirecciones1, pantallaDeDirecciones1, partida1, puntos1);
+
+        //Ruta 2
+        var servicioDeDirecciones2 = new google.maps.DirectionsService;
+        var pantallaDeDirecciones2 = new google.maps.DirectionsRenderer;
+        pantallaDeDirecciones2.setMap(mapa);
+
+        var partida2 =  "Cl. 29i #21C-18, Santa Marta, Magdalena";
+        var puntos2 = [];
+
+        puntos2.push({
+            location: "Av. Del Ferrocarril, Santa Marta, Magdalena",
+            stopover: true
+        });
+        puntos2.push({
+            location: "Cl. 30 #21-91, Santa Marta, Magdalena",
+            stopover: true
+        });
+        //calcularYVisualizarRuta(servicioDeDirecciones2, pantallaDeDirecciones2, partida2, puntos2);
+      }
+    </script>
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSBm5XPN964L3Cq2fFeYc6ufZu8GDJL-o&callback=initMap">
+    </script>
+  </body>
+</html>
